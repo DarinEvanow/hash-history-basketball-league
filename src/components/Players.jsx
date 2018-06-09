@@ -28,9 +28,22 @@ export default class Players extends Component {
   }
 
   render() {
+    const { players, loading } = this.state;
+    const { match, location } = this.props;
+
     return (
       <div className='container two-column'>
-        {JSON.stringify(this.state)}
+        <Sidebar 
+          loading={loading}
+          title='Players'
+          list={players.map(((player) => player.name))}
+          {...this.props}
+        />
+
+        {loading === false && location.pathname === '/players'
+          ? <div className='sidebar-instruction'>Select a Player</div>
+          : null
+        }
       </div>
     )
   }
