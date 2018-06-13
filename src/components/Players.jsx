@@ -28,7 +28,7 @@ export default class Players extends Component {
   }
 
   render () {
-    const { players, loading } = this.state;
+    const { loading, players } = this.state;
     const { match, location } = this.props;
 
     return (
