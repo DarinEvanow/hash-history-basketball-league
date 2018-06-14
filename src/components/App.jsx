@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Players from './Players';
 import Teams from './Teams';
 import TeamPage from './TeamPage';
+import Articles from './Articles';
 import ErrorPage from './ErrorPage';
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path='/players' component={Players} />
             <Route path='/teams' component={Teams} />
             <Route path='/:teamId' exact component={TeamPage} />
+            <Route path='/:teamId/articles' exact component={Articles} />
             <Route component={ErrorPage} />
           </Switch>
         </div>
