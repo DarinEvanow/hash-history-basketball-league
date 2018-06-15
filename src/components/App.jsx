@@ -19,7 +19,7 @@ class App extends Component {
             <Route path='/players' component={Players} />
             <Route path='/teams' component={Teams} />
             <Route path='/:teamId' exact component={TeamPage} />
-            <Route path='/:teamId/articles' exact component={Articles} />
+            <Route path='/:teamId/articles' component={Articles} />
             <Route component={ErrorPage} />
           </Switch>
         </div>

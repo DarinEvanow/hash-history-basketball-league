@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { getTeamsArticles } from '../api';
 import Sidebar from './Sidebar';
+import Article from './Article';
 
 export default class Articles extends Component {
   state = {
@@ -14,7 +15,7 @@ export default class Articles extends Component {
       .then((teamsArticles) => {
         this.setState(() => ({
           loading: false,
-          teamsArticles: teamsArticles.map((article) => article.title)
+          teamsArticles: teamsArticles.map((article) => article.title),
         }))
       })
   }
@@ -33,6 +34,19 @@ export default class Articles extends Component {
           list={teamsArticles}
           {...this.props}
         />
+
+        <Route path={`${url}/:articleId`} render={({ match }) => (
+          <Article teamId={teamId} articleId={match.params.articleId}>
+            {(article) => !article ? <h1>Loading</h1> : (
+              <div className='panel'>
+                <article className='article' key={article.id}>
+                  <h1 className='header'>{article.title}</h1>
+                  <p>{article.body}</p>
+                </article>
+              </div>
+            )}
+          </Article>
+        )} />
        </div>
   }
 }
