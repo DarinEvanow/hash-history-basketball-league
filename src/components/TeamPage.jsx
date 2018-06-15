@@ -4,6 +4,7 @@ import slug from 'slug';
 import { getTeamsArticles, getTeamNames } from '../api';
 import Team from './Team';
 import TeamLogo from './TeamLogo';
+import Loading from './Loading';
 
 export default class TeamPage extends Component {
   state = {
@@ -41,7 +42,7 @@ export default class TeamPage extends Component {
       <div>
         <Team id={teamId}>
           {(team) => team === null
-            ? <h1>Loading</h1>
+            ? <Loading />
             : <div className='panel'>
                 <TeamLogo id={teamId} />
                 <h1 className='medium-header'>{team.name}</h1>
