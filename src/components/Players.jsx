@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import { parse } from 'query-string';
 import slug from 'slug';
 import { getPlayers } from '../api';
@@ -48,7 +49,11 @@ export default class Players extends Component {
           if (loading === true) return null
 
           return (
-            <Player {...players.find((player) => slug(player.name) === match.params.playerId)} />
+            <TransitionGroup className='panel'>
+              <CSSTransition key={location.key} timeout={250} classNames='fade'>
+                <Player {...players.find((player) => slug(player.name) === match.params.playerId)} />
+              </CSSTransition>
+            </TransitionGroup>
           )
         }} />
       </div>
