@@ -7,7 +7,8 @@ import App from './App';
 configure({ adapter: new Adapter() });
 
 describe('<App />', () => {
-  it('should render App', () => {
+  it('should render the App with six routes', () => {
     const wrapper = shallow(<App />)
+    expect(wrapper.find('Route').length).toBe(6)
   })
 })
